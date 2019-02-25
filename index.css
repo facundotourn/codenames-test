@@ -1,0 +1,80 @@
+.tarjeta {
+    height: 80px !important;
+    width: 100%;
+    text-align: center;
+    background-color: #eaedf2;
+    margin: 0px;
+    padding: 0px;
+}
+  
+.trj-visible {
+    pointer-events: none;
+}
+
+.trj-visible-azul {
+    background-color: #4183cc;
+    color: white;
+  }
+  
+  .trj-visible-rojo {
+    background-color: #d13030;
+    color: white;
+  }
+  
+  .trj-visible-x {
+    background-color: black;
+    color: white;
+  }
+  
+  .trj-visible-neutro {
+    background-color: blanchedalmond;
+  }
+
+.butn {
+    position: relative;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transform-style: flat;
+    transition: all 250ms ease-out;
+}
+.butn:before,
+.btn:after {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    transition: all 250ms ease-out;
+}
+
+.paper-raise:before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .paper-raise:hover:before {
+    box-shadow: 0 15px 10px -10px rgba(31, 31, 31, 0.5);
+  }
+  
+  .butn {
+    position: relative;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transform-style: flat;
+    transition: all 250ms ease-out;
+  }
+  .butn:before,
+  .btn:after {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    transition: all 250ms ease-out;
+  }
+  
+  .paper {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+      0 0 40px rgba(128, 128, 128, 0.1) inset;
+  }
