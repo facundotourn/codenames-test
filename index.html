@@ -11,6 +11,9 @@
     <script src="scripts/socket.io.js"></script>
     <script src="index.js"></script>
 
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
     <title>Codenames test</title>
 </head>
 <body>
@@ -30,6 +33,14 @@
         </div>
         <div class="row mt-2">
             <button id="btnNuevaPartida" class="btn btn-block">Nueva partida</button>
+        </div>
+        <div class="row">
+            <div class="float-right">
+                <div class="btn-group btn-group-toggle">
+                    <button id="btnJugador" class="btn btn-outline-primary active" onclick="cambiarAModoJugador();">Jogador</button>
+                    <button id="btnEspia" class="btn btn-outline-primary" onclick="cambiarAModoEspia();">Espía</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>

@@ -29,6 +29,25 @@
   .trj-visible-neutro {
     background-color: blanchedalmond;
   }
+  
+  .trj-espia {
+    pointer-events: none;
+  }
+  
+  .trj-espia-azul {
+    color: #4183cc;
+    font-weight: bold;
+  }
+  
+  .trj-espia-rojo {
+    color: #d13030;
+    font-weight: bold;
+  }
+  
+  .trj-espia-x {
+    background-color: #818181;
+    font-weight: bold;
+  }
 
 .butn {
     position: relative;

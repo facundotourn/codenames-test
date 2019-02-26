@@ -1,6 +1,7 @@
-const url = 'http://localhost:4040';
+const url = 'https://codenames-server.herokuapp.com/';
 const socket = io.connect(url);
 let miSala;
+let modoEspia;
 
 $(document).ready(() => {
     $('#btnBuscarSala').click((e) => {
@@ -11,9 +12,10 @@ $(document).ready(() => {
 
     $('#btnNuevaPartida').click((e) => {
         e.preventDefault();
+        $('#btnJugador').click();
 
         socket.emit('NUEVO_JUEGO', miSala);
-    })
+    });
 
     socket.on('ENTREGAR_SALA', (sala) => {
         console.log(sala);
@@ -59,11 +61,10 @@ function dibujarJuego(juego) {
                         break;
                 }
             }
-            console.log(btnClasses);
 
             if ( j == 0 ) { div = '<div class="col-sm-2 offset-sm-1 px-2">' }
             $(div).append(
-                $('<button class="' + btnClasses + '" onclick="darVueltaTarjeta(' + i + ', ' + j + ')">').html(unaTarjeta.palabra)
+                $('<button id="tarjeta' + i + j + '" class="' + btnClasses + '" onclick="darVueltaTarjeta(' + i + ', ' + j + ')">').html(unaTarjeta.palabra)
             ).appendTo('#row' + i)
         }
     }
@@ -76,4 +77,54 @@ function darVueltaTarjeta(fil, col) {
     dibujarJuego(miSala.juego);
 
     socket.emit('DAR_VUELTA_TARJETA', miSala);
+}
+
+function cambiarAModoJugador() {
+    $('#btnJugador').addClass('active');
+    $('#btnEspia').removeClass('active');
+
+    $.each($('.tarjeta'), (index, item) => {
+        $item = $('#' + item.id);
+        $item.removeClass('trj-espia').removeClass('trj-espia-rojo').removeClass('trj-espia-azul').removeClass('trj-espia-x');
+    });
+}
+
+function cambiarAModoEspia() {
+    modoEspia = true;
+
+    $('#btnJugador').removeClass('active');
+    $('#btnEspia').addClass('active');
+
+    $.each($('.tarjeta'), (index, item) => {
+        var $item = $('#' + item.id);
+        var fil = item.id.substr(-2)[0];
+        var col = item.id.substr(-1);
+        
+        var unaTarjeta = obtenerTarjeta(col, fil);
+        
+        if (unaTarjeta.visible == false) {
+            switch (unaTarjeta.equipo) {
+                case 'A':
+                    $item.addClass('trj-espia-azul').addClass('trj-espia');
+                    break;
+                case 'R':
+                    $item.addClass('trj-espia-rojo').addClass('trj-espia');
+                    break;
+                case 'X':
+                    $item.addClass('trj-espia-x').addClass('trj-espia');     
+                    break;
+                case 'N':
+                    $item.addClass('trj-espia');
+                    break;
+                default:
+                    break;
+            }
+        }
+    });
+}
+
+function obtenerTarjeta(col, fil) {
+    modoEspia = false;
+    const index = miSala.juego.tarjetas.findIndex(x => x.fil == fil && x.col == col);
+    return miSala.juego.tarjetas[index];
 }
