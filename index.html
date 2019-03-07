@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="row mt-5">
+        <div id="rowBuscarSala" class="row mt-5">
             <div class="col-sm-12">
                 <div class="input-group">
                     <input id="inpSala" type="text" class="form-control" placeholder="Ingresar nombre de sala">
@@ -28,13 +28,19 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div id="puntuacion" class="col-sm-2 offset-sm-5 d-none">
+                <span id="puntosRojo" class="trj-espia-rojo">9</span> - 
+                <span id="puntosAzul" class="trj-espia-azul">8</span>
+            </div>
+        </div>
         <div id="tarjetas" class="mt-2">
             
         </div>
-        <div class="row mt-2">
+        <div id="rowNuevaPartida" class="row mt-2 d-none">
             <button id="btnNuevaPartida" class="btn btn-block">Nueva partida</button>
         </div>
-        <div class="row">
+        <div id="rowModo" class="row d-none">
             <div class="float-right">
                 <div class="btn-group btn-group-toggle">
                     <button id="btnJugador" class="btn btn-outline-primary active" onclick="cambiarAModoJugador();">Jogador</button>

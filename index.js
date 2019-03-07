@@ -6,6 +6,7 @@ let modoEspia;
 $(document).ready(() => {
     $('#btnBuscarSala').click((e) => {
         e.preventDefault();
+        $('#rowBuscarSala').addClass('d-none');
         
         socket.emit('SOLICITAR_SALA', $('#inpSala').val());
     })
@@ -18,9 +19,11 @@ $(document).ready(() => {
     });
 
     socket.on('ENTREGAR_SALA', (sala) => {
-        console.log(sala);
+        $('#rowNuevaPartida').removeClass('d-none');
+        $('#rowModo').removeClass('d-none');
         miSala = sala;
         cargarSala(sala);
+        if (modoEspia) { cambiarAModoEspia() }
     });
 })
 
@@ -124,7 +127,6 @@ function cambiarAModoEspia() {
 }
 
 function obtenerTarjeta(col, fil) {
-    modoEspia = false;
     const index = miSala.juego.tarjetas.findIndex(x => x.fil == fil && x.col == col);
     return miSala.juego.tarjetas[index];
 }
