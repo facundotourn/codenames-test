@@ -83,6 +83,8 @@ function darVueltaTarjeta(fil, col) {
 }
 
 function cambiarAModoJugador() {
+    modoEspia = false;
+    
     $('#btnJugador').addClass('active');
     $('#btnEspia').removeClass('active');
 
