@@ -1,4 +1,4 @@
-const url = "http://localhost:4040"; //'https://codenames-server.herokuapp.com/';
+const url = 'https://codenames-server.herokuapp.com/';
 const socket = io.connect(url);
 let miSala;
 let modoEspia;
@@ -85,7 +85,7 @@ $(document).ready(() => {
       },
       move: {
         enable: true,
-        speed: 6,
+        speed: 2,
         direction: "none",
         random: false,
         straight: false,
@@ -101,11 +101,11 @@ $(document).ready(() => {
       detect_on: "canvas",
       events: {
         onhover: {
-          enable: true,
+          enable: false,
           mode: "repulse"
         },
         onclick: {
-          enable: true,
+          enable: false,
           mode: "push"
         },
         resize: true
